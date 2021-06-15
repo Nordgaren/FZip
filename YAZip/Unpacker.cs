@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace FZip
+namespace YAZip
 {
     /// <summary>
     /// Modified from UXM

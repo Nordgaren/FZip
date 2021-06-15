@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DF661790-AE1E-48B1-B69D-7C9E72218D7E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>FZip</RootNamespace>
-    <AssemblyName>FZip</AssemblyName>
+    <RootNamespace>YAZip</RootNamespace>
+    <AssemblyName>YAZip</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

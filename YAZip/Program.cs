@@ -4,7 +4,7 @@ using System.Text;
 using SoulsFormats;
 using System.Reflection;
 
-namespace FZip
+namespace YAZip
 {
 
     class Program
@@ -20,7 +20,7 @@ namespace FZip
                 Console.WriteLine(
                     $"{assembly.GetName().Name} {assembly.GetName().Version.ToString().Replace(".0", "")}\n\n" +
                     "Drag and drop a folder onto the exe to bundle it,\n" +
-                    "or a bundled file by drag and drop any bhd/bdt packed with FZip.\n\n" +
+                    "or a bundled file by drag and drop any bhd/bdt packed with YAZip.\n\n" +
                     "FromSoft game files were Not packed with this tool and will not be unpackable" +
                     "Press any key to exit."
                     );
