@@ -13,6 +13,7 @@ namespace YAZip
 
         static void Main(string[] args)
         {
+
             if (args.Length == 0)
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
