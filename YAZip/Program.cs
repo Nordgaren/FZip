@@ -37,6 +37,7 @@ namespace YAZip
                 string error;
                 FileAttributes attr = File.GetAttributes(arg);
                 string password = null;
+
                 if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
                 {
                     var encryptBHD = Confirm("Would you like to password protect these files?");
@@ -52,8 +53,7 @@ namespace YAZip
                         Console.WriteLine(error);
                     }
                 }
-
-                if (arg.EndsWith(".bhd") || arg.EndsWith(".bdt"))
+                else if (arg.EndsWith(".bhd") || arg.EndsWith(".bdt"))
                 {
                     if (Unpacker.CheckEncrypted(arg.Replace(".bdt", ".bhd")))
                     {
@@ -66,6 +66,7 @@ namespace YAZip
                         Console.WriteLine(error);
                     }
                 }
+                
             }
 
             //watch.Stop();
