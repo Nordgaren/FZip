@@ -2,10 +2,10 @@
 ### Yet Another Zip
 Made by Nordgaren  
 
-This tool uses a modified code from [UXM](https://github.com/JKAnderson/UXM) and [Yabber](https://github.com/JKAnderson/Yabber)  
 This program will bundle up any folder into a bhd/bdt pair. It can also unpack the bhd/bdt pair.  
 supports individual files up to 2GB-ish (max value of an int)  
 
+This tool uses SOME modified code from [UXM](https://github.com/JKAnderson/UXM) and [Yabber](https://github.com/JKAnderson/Yabber)  
 Using [SoulsFormats](https://github.com/JKAnderson/SoulsFormats) by JK Anderson  
 Dependencies packaged into EXE by [Costrua.Fody](https://www.nuget.org/packages/Costura.Fody/) NuGet 
 
