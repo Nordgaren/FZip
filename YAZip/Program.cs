@@ -86,7 +86,7 @@ namespace YAZip
         private static void ProgressReport((double value, string message) obj)
         {
             var percent = obj.value * 100;
-            Console.WriteLine($"{ (int)percent}: {obj.message}");
+            Console.WriteLine($"{ (int)percent} %: {obj.message}");
         }
 
         /// <summary>
