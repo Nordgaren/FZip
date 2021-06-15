@@ -133,19 +133,26 @@ namespace YAZip
 
                         var buckets = bhd.Buckets[bhd.Buckets.Count - 1];
                         var json = buckets[0];
-                        var jsonBytes = json.ReadFile(bdtStream);
-                        List<string> filePaths = JsonConvert.DeserializeObject<List<string>>(Encoding.ASCII.GetString(jsonBytes));
+                        List<string> filePaths = null;
+                        if (json.FileNameHash == 0)
+                        {
+                            var jsonBytes = json.ReadFile(bdtStream);
+                            filePaths = JsonConvert.DeserializeObject<List<string>>(Encoding.ASCII.GetString(jsonBytes));
+                        }
 
                         var archiveDictionary = new Dictionary<uint, string>();
 
-                        foreach (var path in filePaths)
+                        if (filePaths != null)
                         {
-                            archiveDictionary.Add(SFUtil.FromPathHash(path), path);
+                            foreach (var path in filePaths)
+                            {
+                                archiveDictionary.Add(SFUtil.FromPathHash(path), path);
+                            }
                         }
+                        
 
                         foreach (BHD5.Bucket bucket in bhd.Buckets)
                         {
-                           
 
                             foreach (BHD5.FileHeader header in bucket)
                             {
