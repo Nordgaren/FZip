@@ -13,8 +13,6 @@ namespace YAZip
 
         static void Main(string[] args)
         {
-            args = new string[] { @"C:\Users\Tor\Desktop\DARK SOULS PREPARE TO DIE EDITION" };
-
             if (args.Length == 0)
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();

@@ -149,7 +149,6 @@ namespace YAZip
                                 archiveDictionary.Add(SFUtil.FromPathHash(path), path);
                             }
                         }
-                        
 
                         foreach (BHD5.Bucket bucket in bhd.Buckets)
                         {

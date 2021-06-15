@@ -110,12 +110,21 @@ namespace YAZip
                 files = Directory.GetFiles(filePath, "*", SearchOption.TopDirectoryOnly);
                 foreach (var file in files)
                 {
-                    
+                    byte[] bytes;
                     currentFile++;
-                    var bytes = File.ReadAllBytes(file);
+                    try
+                    {
+                        bytes = File.ReadAllBytes(file);
+                    }
+                    catch (IOException)
+                    {
+                        return $"File {Path.GetFileName(file)} cannot be written to bhd";
+                    }
+                    
                     var headerPath = file.Replace(fileDir.ToString(), "");
                     progress.Report((((double)(currentFile) / fileCount),
                                 $"Packing {headerPath} ({currentFile}/{fileCount})..."));
+
                     bool compress = headerPath.Contains(".DCX");
                     if (compress)
                     {
@@ -123,8 +132,7 @@ namespace YAZip
                         headerPath = headerPath.Replace(".DCX", "");
                         headerPath += ".dcx";
                     }
-                    if (bytes.Length > int.MaxValue)
-                        return $"File {Path.GetFileName(file)} is bigger than {int.MaxValue / 1e+9} GB. Cannot write to bhd";
+                        
                     var fullEncrypt = headerPath.Contains(".Encrypt");
                     if (fullEncrypt)
                     {
