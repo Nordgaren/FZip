@@ -44,7 +44,7 @@ namespace YAZip
                     var encryptBHD = Confirm("Would you like to password protect these files?");
                     if (encryptBHD)
                     {
-                        Console.Write("Please Choose a password: ");
+                        Console.Write("Please choose a password: ");
                         password = Console.ReadLine();
                     }
 
