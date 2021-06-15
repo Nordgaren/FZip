@@ -3,6 +3,7 @@ using SoulsFormats;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace YAZip
@@ -61,7 +62,17 @@ namespace YAZip
                     foreach (var file in files)
                     {
                         currentFile++;
-                        var bytes = File.ReadAllBytes(file);
+                        byte[] bytes;
+
+                        try
+                        {
+                            bytes = File.ReadAllBytes(file);
+                        }
+                        catch (IOException e)
+                        {
+                            return $"Cannot {Path.GetFileName(file)} write to bhd. {e.Message}";
+                        }
+
                         var headerPath = file.Replace(fileDir.ToString(), "");
                         bool compress = headerPath.Contains(".DCX");
                         if (compress)
@@ -70,8 +81,6 @@ namespace YAZip
                             headerPath = headerPath.Replace(".DCX", "");
                             headerPath += ".dcx";
                         }
-                        if (bytes.Length > int.MaxValue)
-                            return $"File {Path.GetFileName(file)} is bigger than {int.MaxValue / 1e+9} GB. Cannot write to bhd";
                         var fullEncrypt = headerPath.Contains(".Encrypt");
                         if (fullEncrypt)
                         {
@@ -92,6 +101,7 @@ namespace YAZip
                         bdtStream.Write(bytes, 0, bytes.Length);
                     }
 
+                    //var shuffled = bucket.OrderBy(x => Guid.NewGuid()).ToList(); //Shuffles the bucket before adding it to bhd.
                     bhdWriter.Buckets.Add(bucket);
                 }
 

@@ -13,6 +13,7 @@ namespace YAZip
 
         static void Main(string[] args)
         {
+            args = new string[] { @"C:\Users\Tor\Desktop\DARK SOULS PREPARE TO DIE EDITION" };
 
             if (args.Length == 0)
             {
@@ -35,19 +36,23 @@ namespace YAZip
             foreach (var arg in args)
             {
                 var writePath = Directory.GetParent(arg).ToString();
-
+                string error;
                 FileAttributes attr = File.GetAttributes(arg);
                 string password = null;
                 if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
                 {
-                    var encryptBHD = Confirm("Woul you like to password protect these files?");
+                    var encryptBHD = Confirm("Would you like to password protect these files?");
                     if (encryptBHD)
                     {
                         Console.Write("Please Choose a password: ");
                         password = Console.ReadLine();
                     }
 
-                    Packer.Pack(arg, writePath, password, Progress);
+                    error = Packer.Pack(arg, writePath, password, Progress);
+                    if (error != null)
+                    {
+                        Console.WriteLine(error);
+                    }
                 }
 
                 if (arg.EndsWith(".bhd") || arg.EndsWith(".bdt"))
@@ -57,7 +62,7 @@ namespace YAZip
                         Console.Write("File is Encrypted. What is the Password?: ");
                         password = Console.ReadLine();
                     }
-                    var error = Unpacker.Unpack(arg, password, null, Progress);
+                    error = Unpacker.Unpack(arg, password, null, Progress);
                     if (error != null)
                     {
                         Console.WriteLine(error);
