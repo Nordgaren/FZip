@@ -23,6 +23,8 @@ Both options are case sensitive
 **[TKGP](https://github.com/JKAnderson)** for making SoulsFormats, UXM, and Yabber.  
 
 ### Patch Notes  
+## V 1.1
+* Patched bug thanks to **[NamelessHoodie](https://github.com/NamelessHoodie/)** and other small meme fixes
 ## V 1
 * Release!
 
