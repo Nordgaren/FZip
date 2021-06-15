@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FZip", "BHDPacker\FZip.csproj", "{DF661790-AE1E-48B1-B69D-7C9E72218D7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FZip", "FZip\FZip.csproj", "{DF661790-AE1E-48B1-B69D-7C9E72218D7E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulsFormats", "..\SoulsFormats\SoulsFormats\SoulsFormats.csproj", "{BAFA727F-C8C4-4D74-9007-6992F4F5CDEC}"
 EndProject
