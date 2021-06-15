@@ -1,4 +1,5 @@
-# FZip
+# YAZip
+### Yet Another Zip
 Made by Nordgaren  
 
 This tool uses a modified code from [UXM](https://github.com/JKAnderson/UXM) and [Yabber](https://github.com/JKAnderson/Yabber)  
