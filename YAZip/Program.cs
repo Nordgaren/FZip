@@ -21,7 +21,7 @@ namespace YAZip
                     $"{assembly.GetName().Name} {assembly.GetName().Version.ToString().Replace(".0", "")}\n\n" +
                     "Drag and drop a folder onto the exe to bundle it,\n" +
                     "or a bundled file by drag and drop any bhd/bdt packed with YAZip.\n\n" +
-                    "FromSoft game files were Not packed with this tool and will not be unpackable" +
+                    "FromSoft game files were Not packed with this tool and will not be unpackable. \n\n" +
                     "Press any key to exit."
                     );
                 Console.ReadKey();
