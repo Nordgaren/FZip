@@ -24,7 +24,7 @@ namespace YAZip
         /// <param name="password">if null or whitspace, skips encrypting bhd file</param>
         /// <param name="destination">if null or whitespace, becomes filePath</param>
         /// <param name="progress"></param>
-        /// <returns>error</returns>
+        /// <returns>Error string</returns>
         public static string Unpack(string filePath, string password, string destination, IProgress<(double value, string status)> progress)
         {
             progress.Report((0, "Preparing to unpack..."));
@@ -73,7 +73,7 @@ namespace YAZip
         /// <param name="password"></param>
         /// <param name="destination"></param>
         /// <param name="progress"></param>
-        /// <returns></returns>
+        /// <returns>Error string</returns>
         private static async Task<string> UnpackArchive(string fileDir, string archive, string key,
             BHD5.Game gameVersion, string password, string destination, IProgress<(double value, string status)> progress)
         {
@@ -267,8 +267,7 @@ namespace YAZip
         /// Decompress DCX from Yabber.DCX
         /// </summary>
         /// <param name="sourceFile"></param>
-        /// <returns></returns>
-        private static bool Decompress(string sourceFile)
+        private static void Decompress(string sourceFile)
         {
             string sourceDir = Path.GetDirectoryName(sourceFile);
             string outPath;
@@ -277,10 +276,13 @@ namespace YAZip
 
             byte[] bytes = DCX.Decompress(sourceFile, out DCX.Type compression);
             File.WriteAllBytes(outPath, bytes);
-
-            return false;
         }
 
+        /// <summary>
+        /// Checks if BHD is encrypted
+        /// </summary>
+        /// <param name="bhdPath"></param>
+        /// <returns>Encrypted true or false</returns>
         public static bool CheckEncrypted(string bhdPath)
         {
             bool encrypted = true;
@@ -294,6 +296,12 @@ namespace YAZip
             return encrypted;
         }
 
+        /// <summary>
+        /// Write files asyncronously
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="bytes"></param>
+        /// <returns>long Data written</returns>
         private static async Task<long> WriteFileAsync(string path, byte[] bytes)
         {
             using (var fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None, 4096, false))

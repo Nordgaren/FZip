@@ -20,8 +20,8 @@ namespace YAZip
                 Console.WriteLine(
                     $"{assembly.GetName().Name} {assembly.GetName().Version.ToString().Replace(".0", "")}\n\n" +
                     "Drag and drop a folder onto the exe to bundle it,\n" +
-                    "or a bundled file by drag and drop any bhd/bdt packed with YAZip.\n\n" +
-                    "FromSoft game files were Not packed with this tool and will not be unpackable. \n\n" +
+                    "or unbundle a bundled file by drag and drop bhd or bdt packed with YAZip.\n\n" +
+                    "FromSoft game files were Nnt packed with this tool and will not be unpackable. \n\n" +
                     "Press any key to exit."
                     );
                 Console.ReadKey();
@@ -58,7 +58,7 @@ namespace YAZip
                 {
                     if (Unpacker.CheckEncrypted(arg.Replace(".bdt", ".bhd")))
                     {
-                        Console.Write("File is Encrypted. What is the Password?: ");
+                        Console.Write("File is encrypted. What is the Password?: ");
                         password = Console.ReadLine();
                     }
                     error = Unpacker.Unpack(arg, password, null, Progress);
@@ -78,11 +78,11 @@ namespace YAZip
         /// <summary>
         /// Used for debugging
         /// </summary>
-        /// <param name="writePath"></param>
-        private static void BHDRead(string writePath)
+        /// <param name="bhdPath"></param>
+        private static void BHDRead(string bhdPath)
         {
             BHD5 bhdReader;
-            using (FileStream bhdStream = File.OpenRead(writePath + @"\DARK SOULS PREPARE TO DIE EDITION.bhd"))
+            using (FileStream bhdStream = File.OpenRead(bhdPath + @"\DARK SOULS PREPARE TO DIE EDITION.bhd"))
             {
                 bhdReader = BHD5.Read(bhdStream, BHD5.Game.DarkSouls3);
             }
@@ -98,7 +98,7 @@ namespace YAZip
         /// Yes/No prompt
         /// </summary>
         /// <param name="title"></param>
-        /// <returns></returns>
+        /// <returns>yes or no</returns>
         public static bool Confirm(string title)
         {
             ConsoleKey response;

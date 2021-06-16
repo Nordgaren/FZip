@@ -41,7 +41,7 @@ namespace YAZip
         /// </summary>
         /// <param name="bhdPath"></param>
         /// <param name="password"></param>
-        /// <returns></returns>
+        /// <returns>MemoryStream</returns>
         public static MemoryStream DecryptBHD(string bhdPath, string password)
         {
             byte[] fileContent = File.ReadAllBytes(bhdPath);
@@ -67,7 +67,7 @@ namespace YAZip
         /// <summary>
         /// Generate AES key
         /// </summary>
-        /// <returns></returns>
+        /// <returns>byte[] AES Key</returns>
         public static byte[] GetKey()
         {
             AES.GenerateKey();
@@ -80,7 +80,7 @@ namespace YAZip
         /// <param name="data"></param>
         /// <param name="key"></param>
         /// <param name="fullEncrypt"></param>
-        /// <returns></returns>
+        /// <returns>List of BHD5.Range</returns>
         public static List<BHD5.Range> Encrypt(byte[] data, byte[] key, bool fullEncrypt)
         {
             if (data.Length < 128)

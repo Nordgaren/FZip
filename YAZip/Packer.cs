@@ -17,7 +17,7 @@ namespace YAZip
         /// <param name="writePath"></param>
         /// <param name="password"></param>
         /// <param name="progress"></param>
-        /// <returns></returns>
+        /// <returns>Error string</returns>
         public static string Pack(string filePath, string writePath, string password, IProgress<(double value, string status)> progress)
         {
             var bhdWriter = new BHD5(BHD5.Game.DarkSouls3);
