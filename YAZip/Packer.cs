@@ -122,8 +122,7 @@ namespace YAZip
                     }
                     
                     var headerPath = file.Replace(fileDir.ToString(), "");
-                    progress.Report((((double)(currentFile) / fileCount),
-                                $"Packing {headerPath} ({currentFile}/{fileCount})..."));
+                    
 
                     bool compress = headerPath.Contains(".DCX");
                     if (compress)
@@ -148,7 +147,8 @@ namespace YAZip
                     header.FileOffset = bdtStream.Length;
                     header.PaddedFileSize = bytes.Length;
                     bucket.Add(header);
-                    
+                    progress.Report((((double)(currentFile) / fileCount),
+                                $"Packing {headerPath} ({currentFile}/{fileCount})..."));
                     bdtStream.Write(bytes, 0, bytes.Length);
                 }
                 bhdWriter.Buckets.Add(bucket);

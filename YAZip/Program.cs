@@ -14,6 +14,9 @@ namespace YAZip
         static void Main(string[] args)
         {
 
+            // old
+            //args = new string[] { @"C:\Users\Tor\source\repos\YAZip - FS Version\YAZip\bin\Debug\DARK SOULS PREPARE TO DIE EDITION" };
+
             if (args.Length == 0)
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
@@ -28,8 +31,8 @@ namespace YAZip
                 return;
             }
 
-            //var watch = new System.Diagnostics.Stopwatch();
-            //watch.Start();
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
             Progress = new Progress<(double value, string status)>(ProgressReport);
 
             foreach (var arg in args)
@@ -70,8 +73,8 @@ namespace YAZip
                 
             }
 
-            //watch.Stop();
-            //Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
             Console.ReadLine();
         }
 
